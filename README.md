@@ -1,3 +1,45 @@
+# React Native Assessment App
+
+Small demo app showing product reservations with timed holds.
+
+Features
+- Reserve items for 5 minutes when adding to cart.
+- Live countdown timers in the cart.
+- Reservations persist across app restarts using AsyncStorage.
+- Auto-removal of expired reservations and stock restoration.
+
+Quick start
+
+1. Install dependencies
+
+```bash
+# using npm
+npm install
+
+# install async-storage (if you haven't yet)
+expo install @react-native-async-storage/async-storage
+
+# start the app
+npm run start
+```
+
+Notes
+- Key files:
+  - `context/CartContext.tsx` — reservation logic, persistence, timers
+  - `app/index.tsx` — product list and Open Cart button with badge
+  - `app/cart.tsx` — cart UI with live timers, remove and checkout actions
+- The app already expects `@react-native-async-storage/async-storage`. If you used `yarn add @react-native-async-storage/async-storage` it's fine.
+- Timers are scheduled on load and persisted reservations are filtered by expiry, so reopening the app restores countdowns correctly.
+
+Testing tips
+- Add an item to the cart and open the cart to see the countdown.
+- Close/reopen the app to confirm the reservation persists and the remaining time is accurate.
+
+Possible improvements
+- Show local notifications when reservations expire.
+- Add an explicit checkout flow to consume reserved items permanently.
+
+If you want, I can commit these changes or run the app here to verify behavior.
 # Welcome to your Expo app 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
